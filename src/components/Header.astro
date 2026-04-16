@@ -1,0 +1,85 @@
+---
+const links = [
+  { label: 'MANIFESTO', href: '#manifesto' },
+  { label: 'PROJETOS', href: '#projetos' },
+  { label: 'QUEM SOMOS', href: '#quem-somos' },
+  { label: 'CONTATO', href: '#contato' },
+];
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center">
+      <span class="font-display font-black text-xl tracking-tight">THEATO</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="font-display font-medium text-sm tracking-widest text-brand-black hover:text-brand-red transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Menu"
+    >
+      <span class="block w-6 h-0.5 bg-brand-black transition-all" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-brand-black transition-all" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-brand-black transition-all" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-brand-beige/95 backdrop-blur-md border-t border-brand-black/10">
+    <nav class="flex flex-col px-6 py-6 gap-6">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-link font-display font-medium text-lg tracking-widest text-brand-black hover:text-brand-red transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header')!;
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  let isOpen = false;
+
+  // Sticky header with blur background
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      header.classList.add('bg-brand-beige/95', 'backdrop-blur-md', 'shadow-sm');
+    } else {
+      header.classList.remove('bg-brand-beige/95', 'backdrop-blur-md', 'shadow-sm');
+    }
+  });
+
+  // Mobile menu toggle
+  toggle.addEventListener('click', () => {
+    isOpen = !isOpen;
+    menu.classList.toggle('hidden', !isOpen);
+  });
+
+  // Close menu on link click
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      menu.classList.add('hidden');
+    });
+  });
+</script>

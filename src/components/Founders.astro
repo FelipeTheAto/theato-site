@@ -1,0 +1,47 @@
+---
+const founders = [
+  {
+    name: 'Felipe Viana Lycurgo',
+    role: 'Gestão Cultural & Produção Executiva',
+    bio: 'Advogado de formação, produtor cultural por vocação. Estrutura projetos, escreve editais, faz captação e transforma ideias em realidade. O pensamento lógico a serviço da arte.',
+    initials: 'FL',
+  },
+  {
+    name: 'Luiza Barbosa da Silva',
+    role: 'Criação Artística & Design',
+    bio: 'Multiartista — escreve, atua, dança e desenha. O motor criativo da TheAto. Autora de "Lebre no País do Chá", concebe os universos visuais e dramatúrgicos de cada projeto.',
+    initials: 'LB',
+  },
+];
+---
+
+<section id="quem-somos" class="bg-white py-24 md:py-32 lg:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="fade-in font-display font-black text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight mb-16 md:mb-20">
+      Quem somos
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      {founders.map((founder) => (
+        <div class="fade-in flex flex-col sm:flex-row gap-8 items-start">
+          <!-- Photo placeholder -->
+          <div class="flex-none w-32 h-32 sm:w-40 sm:h-40 rounded-2xl bg-brand-beige flex items-center justify-center">
+            <span class="font-display font-black text-3xl text-brand-red/40">{founder.initials}</span>
+          </div>
+
+          <div>
+            <h3 class="font-display font-black text-2xl uppercase tracking-tight mb-1">
+              {founder.name}
+            </h3>
+            <p class="font-display font-medium text-sm uppercase tracking-widest text-brand-red mb-4">
+              {founder.role}
+            </p>
+            <p class="font-body text-lg leading-relaxed text-brand-black/80">
+              {founder.bio}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

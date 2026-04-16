@@ -1,0 +1,33 @@
+---
+const blocks = [
+  {
+    keyword: 'PROPÓSITO PRIMEIRO',
+    text: 'O conceito vem antes da cena. Cada projeto nasce de uma pergunta, de um incômodo, de algo que precisa existir. A produção inteira se constrói a partir desse pilar.',
+  },
+  {
+    keyword: 'CADA PROJETO, UMA IDENTIDADE',
+    text: 'Não existe fórmula. Cada trabalho tem seu próprio universo visual, sua comunicação, sua linguagem. O que conecta tudo é o método, não a estética.',
+  },
+  {
+    keyword: 'CASCAVEL. ARTES CÊNICAS.',
+    text: 'Produtora cultural do oeste do Paraná. Teatro, música e dança com estrutura profissional, editais de fomento e captação de recursos. Sem improvisar na gestão.',
+  },
+];
+---
+
+<section class="bg-white py-24 md:py-32 lg:py-40 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+      {blocks.map((block) => (
+        <div class="fade-in">
+          <h3 class="font-display font-black text-3xl md:text-4xl text-brand-red uppercase tracking-tight leading-tight mb-6">
+            {block.keyword}
+          </h3>
+          <p class="font-body text-lg leading-relaxed text-brand-black/80">
+            {block.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
