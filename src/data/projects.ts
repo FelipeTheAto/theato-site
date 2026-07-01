@@ -7,6 +7,7 @@ export interface Project {
   year: string;
   description: string;
   externalUrl?: string;
+  imageUrl?: string;
   theme: 'colorful' | 'dark';
 }
 
@@ -20,6 +21,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Saúde mental, dependência emocional e amizades tóxicas — da terapia para os palcos.',
     externalUrl: 'https://parallela.art.br/evento/lebre/',
+    imageUrl: '/images/lebre-banner.jpg',
     theme: 'colorful',
   },
   {

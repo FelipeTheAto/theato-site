@@ -13,37 +13,43 @@ function StatusBadge({ label, theme }: { label: string; theme: 'colorful' | 'dar
 
 function ProjectCard({ project }: { project: Project }) {
   const isColorful = project.theme === 'colorful';
+  const hasImage = !!project.imageUrl;
 
   return (
     <div
-      className={`flex-none w-[300px] sm:w-[340px] md:w-[360px] h-[460px] md:h-[480px] rounded-2xl overflow-hidden relative flex flex-col justify-end p-8 ${
-        isColorful
-          ? 'bg-gradient-to-br from-brand-red via-red-600 to-orange-500 text-white'
-          : 'bg-[#1a1a1a] text-white'
+      className={`flex-none w-[300px] sm:w-[340px] md:w-[360px] h-[460px] md:h-[480px] rounded-2xl overflow-hidden relative flex flex-col justify-end p-8 text-white ${
+        !hasImage && isColorful
+          ? 'bg-gradient-to-br from-brand-red via-red-600 to-orange-500'
+          : 'bg-[#1a1a1a]'
       }`}
+      style={hasImage ? { backgroundImage: `url(${project.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center top' } : undefined}
     >
+      {hasImage && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+      )}
+
       {/* Status badge */}
-      <div className="absolute top-6 left-6">
+      <div className="absolute top-6 left-6 z-10">
         <StatusBadge label={project.statusLabel} theme={project.theme} />
       </div>
 
       {/* Year */}
-      <div className="absolute top-6 right-6">
-        <span className={`font-display font-bold text-sm ${isColorful ? 'text-white/80' : 'text-white/40'}`}>
+      <div className="absolute top-6 right-6 z-10">
+        <span className={`font-display font-bold text-sm ${isColorful || hasImage ? 'text-white/80' : 'text-white/40'}`}>
           {project.year}
         </span>
       </div>
 
       {/* Content */}
-      <div>
-        <p className={`font-display text-sm uppercase tracking-widest mb-2 ${isColorful ? 'text-white/80' : 'text-white/40'}`}>
+      <div className="relative z-10">
+        <p className={`font-display text-sm uppercase tracking-widest mb-2 ${isColorful || hasImage ? 'text-white/80' : 'text-white/40'}`}>
           {project.subtitle}
         </p>
         <h3 className="font-display font-black text-2xl md:text-3xl uppercase leading-tight mb-3">
           {project.title}
         </h3>
         {project.description && (
-          <p className={`font-body text-sm leading-relaxed mb-6 ${isColorful ? 'text-white/90' : 'text-white/50'}`}>
+          <p className={`font-body text-sm leading-relaxed mb-6 ${isColorful || hasImage ? 'text-white/90' : 'text-white/50'}`}>
             {project.description}
           </p>
         )}
