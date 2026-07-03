@@ -1,62 +1,36 @@
 # Plano do Site — Status de Execução
 
-> Última atualização: 2026-04-16
+> Última atualização: 2026-07-03
 
 ---
 
 ## Fase 1: Site funcional — CONCLUÍDA
-- [x] Scaffold Astro + Tailwind + config de marca
-- [x] BaseLayout com meta tags, OG, fonts (Google Fonts por enquanto)
-- [x] Header sticky com blur e menu mobile
-- [x] ManifestoHero (hero full-viewport)
-- [x] ManifestoBody (4 blocos placeholder)
-- [x] Philosophy (3 blocos, terceiro em aberto)
-- [x] ProjectCarousel (React island com embla-carousel, 1 card colorido + 4 escuros)
-- [x] Founders (placeholder pra fotos)
-- [x] ContactCTA + Footer
-- [x] Dev server testado e funcionando (http://localhost:4321)
+Estrutura completa em Astro + Tailwind + React island (embla-carousel). Deploy: GitHub Pages (`FelipeTheAto/theato-site`) + DNS na Hostinger → theato.com.br.
 
----
+## Fase 2: Conteúdo real — CONCLUÍDA (2026-07-03)
+- [x] Entrevista do manifesto realizada (5 perguntas)
+- [x] Manifesto reescrito (hero, 4 blocos + fecho assinado, Philosophy completa)
+- [x] Contrato de escrita do site criado em `marca/modo-manifesto-site.md` (repo privado) — toda edição de texto passa por ele
+- [x] Bloco de números (99,7/100 PNAB, estreia 17/04/2026, em circulação)
+- [x] Carousel enxuto: a Lebre (link pro site próprio) + 1 teaser
+- [x] Banner da Lebre no card (comprimido)
+- [x] Logo real no header/footer, favicon, OG image 1200×630
+- [x] SEO: JSON-LD Organization, meta description sem Cascavel, sitemap
+- [x] Acento cursivo (Caveat): assinatura do manifesto + "cada um, um universo"
+- [x] Grain overlay, fade-in com blur, hover nos cards, prefers-reduced-motion
 
-## Fase 2: Conteúdo real — EM ANDAMENTO
-
-### Próximo passo imediato: ENTREVISTA DO MANIFESTO
-O manifesto precisa ser escrito do zero. Na próxima sessão, retomar a entrevista com Felipe. Perguntas preparadas:
-
-1. **Por que a TheAto existe?** O que faltava no mundo que fez essa produtora precisar existir?
-2. **O que te incomoda no jeito que cultura/teatro é feito hoje?**
-3. **Qual é a diferença entre a TheAto e uma produtora que "só produz espetáculo"?**
-4. **Uma frase que resumisse tudo pra alguém que nunca ouviu falar da TheAto?**
-5. **Daqui a 5 anos, o que a TheAto é?**
-
-Com as respostas, produzir:
-- [ ] Frase-abertura do hero (ManifestoHero.astro)
-- [ ] Texto do manifesto (ManifestoBody.astro — 3-5 parágrafos)
-- [ ] Terceiro bloco da Philosophy (Philosophy.astro — substituir o placeholder)
-
-### Outros itens da Fase 2
-- [ ] Definir formato padrão dos banners de projeto (Felipe mencionou 5:4, confirmar)
-- [ ] Receber banner digital do Lebre no País do Chá
-- [ ] Atualizar card do Lebre com banner real no carousel
-- [ ] Escrever bios definitivas dos fundadores
-- [ ] Providenciar fotos de retrato (Felipe + Luiza)
-- [ ] OG image pra compartilhamento social (1200×630)
-- [ ] Favicon derivado do logo
-- [ ] SEO: meta description final, JSON-LD (Organization schema), sitemap
-- [ ] Deploy no GitHub Pages + configurar domínio na Hostinger
-
----
-
-## Fase 3: Polimento — PENDENTE
+## Fase 3: Pendências (dependem de material do Felipe)
+- [ ] Retratos de Felipe e Luiza → plugar em `Founders.astro` (hoje: iniciais em beige)
+- [ ] Número de público da temporada da Lebre → atualizar `Stats.astro` quando a circulação fechar
 - [ ] Scroll horizontal automático no carousel (Felipe vai enviar referências visuais)
-- [ ] Animações sutis de scroll (fade-in-up via CSS + IntersectionObserver — já tem a base no global.css)
-- [ ] Analytics (Plausible/Umami)
-- [ ] Self-host das fonts Montserrat (trocar Google Fonts por woff2 local)
-- [ ] Blog/diário de processo (Astro content collections — se fizer sentido)
+- [ ] Self-host das fonts (Montserrat + Caveat woff2 locais)
+- [ ] Analytics (Plausible/Umami) — se quiser
+- [ ] Imagens abstratas on-brand pro manifesto (geração com aprovação; prompts ou Canva)
 
 ---
 
-## Notas soltas
-- O `npx astro dev` falha por causa dos caracteres especiais no path. Usar `node ./node_modules/astro/astro.js dev --port 4321`.
-- A referência de Cascavel foi removida do terceiro bloco da Philosophy. A TheAto não quer se limitar geograficamente.
-- O conteúdo atual do ManifestoHero e ManifestoBody é placeholder funcional. O layout e a tipografia estão prontos, só falta o texto real.
+## Notas operacionais
+- `npx astro dev` falha por causa dos caracteres especiais no path. Usar `node ./node_modules/astro/astro.js dev --port 4321`.
+- Deploy: commit no repo principal → `git subtree split --prefix=site -b site-deploy` → `git push https://github.com/FelipeTheAto/theato-site.git site-deploy:main` → GitHub Actions builda e publica.
+- O `.gitignore` da RAIZ ignora `*.png` — assets do site devem ser `.jpg`, `.webp`, `.ico` ou `.svg`.
+- Regra de texto: a peça é **a Lebre** (feminino). Ver `marca/modo-manifesto-site.md` pras demais regras.

@@ -17,7 +17,7 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div
-      className={`flex-none w-[300px] sm:w-[340px] md:w-[360px] h-[460px] md:h-[480px] rounded-2xl overflow-hidden relative flex flex-col justify-end p-8 text-white ${
+      className={`flex-none w-[300px] sm:w-[340px] md:w-[360px] h-[460px] md:h-[480px] rounded-2xl overflow-hidden relative flex flex-col justify-end p-8 text-white transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-2 ${
         !hasImage && isColorful
           ? 'bg-gradient-to-br from-brand-red via-red-600 to-orange-500'
           : 'bg-[#1a1a1a]'
@@ -58,7 +58,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.externalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-white text-brand-red font-display font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-full hover:bg-white/90 transition-colors"
+            className="inline-block bg-white text-brand-red font-display font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-full hover:bg-white/90 active:scale-[0.98] transition-all duration-300"
           >
             Ver mais
           </a>
